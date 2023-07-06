@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class FirstActivity extends AppCompatActivity {
 
     @Override
+    //java의 main 역할
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //내가 어떤 layout을 점유할 것이냐: layout은 xml로 구성
@@ -15,6 +16,6 @@ public class MainActivity extends AppCompatActivity {
         //img는 drawble 폴더에 icon은 mipmap 폴더에 넣는다.
         //icon은 해상도에 따라 넣어지는 mipmap 폴더 위치가 달라진다.
         //devicemanger에서 에뮬레이터도 version에 맞게끔 다운받아줘야 한다.
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_first);
     }
 }

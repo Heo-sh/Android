@@ -13,13 +13,32 @@
         android:theme="@style/Theme.Ex_0705"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".RelativeActivity"
             android:exported="true">
+            <!-- 첫 번째로 실행이 될 가능성이 있는 어플리케이션이다. -->
+            <!-- if, intent-filter가 여러 개 있다면 가장 먼저 만들어진 요소에서 실행 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".FrameActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".LinearActivity"
+            android:exported="true">
+            <!--
+            android:exported -> 다른 어플에 의해 현재 만들어지고 있는 앱의
+                                액티비티가 실행될 수 있는지 아닌지를
+                                설정하는 역할
+            -->
+        </activity>
+        <activity
+            android:name=".FirstActivity"
+            android:exported="true">
         </activity>
     </application>
 

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?><!--LinearLayout-->
+<!--요소들을 수평, 수직으로 배치하는 Layout-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LinearActivity">
+    <!--android:orientation="vertical": 수직정렬-->
+    <!--android:orientation="horizontal": 수평정렬-->
+
+    <!--wrap_content: content의 길이만큼 공간 차지-->
+    <!--math_content: parent의 길이와 똑같은 공간 차지, 세로는 왠만하면 wrap을 쓰자-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:text="TextView1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#aaf"
+        android:text="안녕하세요!"
+        android:textSize="10dp" />
+    <!--
+    mm와 같은 절대값을 사용하면 휴대폰이 달라졌을 때
+    화면의 크기가 다르면 요소의 크기가 다르게 나올 수 있다.
+    dp(device imdependens pixel): 사용 중인 디바이스의 해상도에 맞는 pixel값을 계산하여
+                                  크기를 결정해주는 단위
+                                  완전히 해결되는 건 아니지만 mm보다는 훨씬 편리한 단위이기
+                                  때문에 모든 단위는 dp로 통일한다.
+    -->
+
+    <!--SeekBar: 음량을 조절하는 바-->
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--ProgressBar: Lodding Bar-->
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <!--별점 매기기-->
+    <!--android:numStars -> 별의 개수 조절하는 속성-->
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="3" />
+
+    <!--CheckBox-->
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox" />
+
+    <!--RadioButton-->
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn1" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn2" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn1" />
+
+    </LinearLayout>
+
+    <!--input 같은 역할-->
+    <!--android:hint -> input의 placeholder 역할-->
+    <!--android:inputType="numberPassword" -> 숫자 키패드가 화면에 나오게 한다.-->
+    <!--android:inputType="textEmailAddress" -> 자판 밑에 @가 있다.-->
+    <!--android:inputType="number" -> 숫자만 입력 가능-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="id 입력"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password 입력"
+        android:inputType="numberPassword"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email 입력"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="숫자 입력"
+        android:inputType="number"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

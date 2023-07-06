@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RelativeActivity">
+
+    <!--방향성이 없기 때문에 요소가 왼쪽 위에 만들어짐-->
+    <!--하나의 Layout에서 id가 중복되게 만들 수 없다.-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="URL"
+        android:textSize="40dp"
+        android:id="@+id/tv"/>
+
+    <!--
+    EditText: 너비를 wrap_content로 만들게 되면
+    글을 작성하기 전까지 딱 붙어있어서 보기가 안 좋음
+    어느 정도 너비를 미리 설정하는 게 좋다.
+    -->
+    <!--
+    @+id: 객체에 id를 생성
+    @id: 이미 있는 id를 참조
+    -->
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/et"
+        android:layout_toRightOf="@id/tv"/>
+
+    <!--android:layout_below -> 기준이 되는 요소의 아래에 붙임-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ok"
+        android:id="@+id/btn"
+        android:layout_below="@id/tv"
+        android:layout_alignRight="@id/et"/>
+
+    <!--android:layout_alignParent: 부모요소를 기준으로 방향을 찾는다-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="bottom"
+        android:background="#491C1C"
+        android:layout_alignParentBottom="true"
+        />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerInParent="true"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

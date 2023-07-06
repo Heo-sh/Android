@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+FrameLayout
+- 먼저 만들어진 요소가 밑에 깔리는 Layout
+- 배치하는데 자유로움
+-->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FrameActivity"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#000"/>
+
+    <!--
+    layout_margin: 웹에서는 하나의 속성에 여러 방향의 margin을 주는 게 가능하나
+                   안드로이드에서는 방향별로 속성을 따로 적어야 함.
+    -->
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="20dp"
+        android:background="#f00"/>
+
+    <!--
+    dp도 100 이상 넘어가게 되면 오차가 생긴다.
+    그래서 margin 보다는 layout_gravity 속성을 권장
+    layout_gravity: 현재 객체의 위치를 통째로 변경하는 속성
+                    최대 2개의 속성 값을 줄 수 있다. "|"를 사용
+                    속성 자체를 두 번 쓰는 것은 불가
+    -->
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#aaa"
+        android:layout_gravity="right"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#aef"
+        android:layout_gravity="bottom|right"
+        android:text="hi"
+        android:textSize="25dp"
+        android:textColor="#aaa"
+        android:padding="20dp"/>
+
+    <!--android:gravity -> 객체 내부에 있는 요소들의 위치 변경-->
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#000"
+        android:layout_gravity="bottom"
+        android:text="hi"
+        android:textSize="30dp"
+        android:textColor="#f39"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:background="#AF6188"/>
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="#6559F13F"
+        android:text="A"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:textSize="30dp"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</FrameLayout>
