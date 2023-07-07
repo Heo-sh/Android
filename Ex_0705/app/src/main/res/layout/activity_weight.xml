@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WeightActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="top"/>
+
+    <!--
+    android:layout_weight -> view에 가중치를 주는 속성
+                             각각의 컴포넌트의 크기 조절
+                             많이 사용되는 속성 중 하나
+                             LinearLayout 안의 Button 두 개의 비율은
+                             1:1로 가지고 있다.
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#6565BA"
+        android:gravity="center">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn1"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btn2"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <!--
+    LinearLayout의 높이를 match로 잡아버리면 공간을 다 차지하는 건 똑같지만
+    밑에 요소들이 생길 경우 자리가 없어서 보이지 않는다.
+    그래서 요소들이 더 생길 경우를 대비해서 weight 속성을 주게 되면
+    요소가 들어갈 최소한의 자리를 생성해준다.
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#8ac"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="end"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="end2"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</LinearLayout>

@@ -70,6 +70,69 @@ Manifest
 3. 앱에서 사용하는 하드웨어/소프트웨어 기능을 정의
     - ex) 카메라, 블루투스, 사진첩
 4. 앱에서 링크되어야 하는 라이브러리 선언	
+----------------------------------------------------------------
+Activity의 생명 주기
+- Activity는 UI와 가장 밀접한 관련을 갖기 때문에
+  사실상 안드로이드 앱에 있어서 기본이 되는 구성 요소이다.
+- 보통 앱은 하나 이상의 Activity가 연결된 형태로 구성
+- Activity는 생명 주기를 갖는다.
+
+생명 주기 함수
+1. onCreate() 
+  - Activity가 생성되면 가장 먼저 호출
+  - 최초로 앱 실행 시 호출
+  - 생명주기를 통틀어서 한번만 호출되는 메서드
+  - Activity 최초 실행에 해야하는 작업을 수행하기 적당
+  - 화면 Layout 정의, View 생성 등은 이 곳에서 한다.
+2. onStart()
+  - 이 시점부터 사용자가 Activity를 볼 수 있다.
+  - 화면에 진입할 때마다 실행되어야 하는 작업을 이 곳에 구현
+3. onResume()
+  - 현재 Activity가 사용자에게 focus In 되어 있는 상태
+  - 화면에 보여지는 상태
+4. onPause()
+  - focus를 잃은 상태가 되면 호출
+  - Activity가 실행 중인 상태에서 사용자와 상호작용이 불가능한 상태
+  - 다른 Activity가 호출되기 전에 실행되기 때문에 무거운 작업을
+    수행하지 않도록 주의
+  - 영구적인 Data는 이곳에 저장
+  - 화면에 보여지지 않는 상태
+5. onStop()
+  - Activity가 다른 Activity에 의해 100%로 가려질 때 호출되는 메서드
+  - 홈 키를 누르는 경우, 다른 Activity로의 이동이 있는 경우
+  - 이 상태에서 Activity가 호출되면 onRestart()가 호출된다.
+6. onDestroy()
+  - Activity가 완전히 종료되었을 때 호출되는 메서드
+  - finish() or onBackPressed()가 호출되면 호출
+  - 메모리 부족일 때 호출
+  - onStop(), onDestroy()는 메모리 부족이 발생 시 Skip될 수 있다.
+7. onRestart()
+  - onStop()이 호출된 이후에 다시 기존 Activity로 돌아오는 경우에
+    호출되는 메서드
+  - onRestart()가 호출된 이후 이어서 onStart()가 호출됨
+------------------------------------------------------------------------
+R Class
+- Android에는 R Class가 객체를 static으로 제공
+- R.java객체는 Android 소스(Layout, img, String 등)를 식별하기 위해
+  변수들을 관리
+- 소스파일(JAVA)에서 resource에 접근할 때 R Class 사용
+- XML파일에서는 R Class의 역할을 @(Annotaion)가 대신한다.
+- 객체가 id를 부여받는 순간 R.java가 16진수의 정수 형태로 값을 저장
+- 심지어 Layout을 만들 때조차 정수로 저장
+- build할 때마다 값이 바뀐다.	
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

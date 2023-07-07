@@ -1,8 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Ex_0705" parent="Theme.AppCompat.DayNight.NoActionBar">
+                                                <!--Material13을 AppCompat으로 바꿔주면 됨-->
+    <style name="Base.Theme.Ex_0705" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!--status bar 색깔 바꾸기-->
+        <item name="android:statusBarColor" tools:target="1">#F00</item>
+
+        <!--Action bar 숨기기 true, 보이기 false-->
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="Theme.Ex_0705" parent="Base.Theme.Ex_0705" />
