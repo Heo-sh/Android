@@ -121,9 +121,34 @@ R Class
 - 심지어 Layout을 만들 때조차 정수로 저장
 - build할 때마다 값이 바뀐다.	
 
+---------------------------------------------------------------------
+회문 구하기
+- 빈 문자열 변수를 만들어
+  받은 문자열의 길이(length)만큼 -1씩 내려가서
+  charAt으로 문자열을 잘라서 넣어준다.
+----------------------------------------------------------------------
+visibility 속성
+- 사용자와의 상호작용을 통해 View를 숨기거나 표시하고 싶을 때
+  visibility 속성으로 해결
+- View 클래스에 정의되어 있으며, 모든 View를 대상으로 사용 가능
 
+visibility 종류
+1. visible: 해당 View가 보이는 상태
+2. invisible: 해당 View가 보이지 않는 상태
+	  숨겨진 상태이지만, 공간은 차지
+3. gone: 해당 View가 보이지 않는 상태
+           View가 차지하던 공간도 같이 숨겨진다.
+---------------------------------------------------------------------
+SELECTOR
+- View의 각 상태의 drawble을 달리하여 효과를 주는 방법
+- Background와 textColor에 적용 가능
 
-
+속성
+1. state_pressed: View가 눌렸을 때(touch나 click 발생 시)
+2. state_focused: View에 focus가 위치했을 때(EditText를 입력할 수 잇을 때)
+3. state_selected: View를 선택했을 때(방향키로 이동하다가 선택 시)
+4. state_checkable: Check 가능한 상태일 때(CheckBox를 Check할 수 있는 상태일 시)
+5. state_checked: Check된 상태일 때(CheckBox가 Check된 상태일 때)
 
 
 

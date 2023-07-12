@@ -31,8 +31,8 @@ public class EventActivity extends AppCompatActivity {
         txt = findViewById(R.id.txt); //EditText txt
 
         //공통 감지자
-        send.setOnClickListener(click);
-        reset.setOnClickListener(click);
+        send.setOnClickListener(click); //Button send
+        reset.setOnClickListener(click); //Button reset
 
         res = findViewById(R.id.res); //TextView
 
@@ -77,6 +77,6 @@ public class EventActivity extends AppCompatActivity {
                 res.setBackgroundColor(Color.BLACK);
                 res.setText("결과");
             }
-        }
+        } //onClick
     };
 }
