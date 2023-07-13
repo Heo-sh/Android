@@ -149,11 +149,38 @@ SELECTOR
 3. state_selected: View를 선택했을 때(방향키로 이동하다가 선택 시)
 4. state_checkable: Check 가능한 상태일 때(CheckBox를 Check할 수 있는 상태일 시)
 5. state_checked: Check된 상태일 때(CheckBox가 Check된 상태일 때)
+---------------------------------------
+2023-07-13
+Dialog
+- 화면에 보여지는 작은 window
+- 화면을 채우지 않고, 사용자에게 어떤 정보를 전달, 추가적인
+  정보를 입력받을 수 있다.
+- Dialog 클래스가 있으나, 직접 사용보다는 SubClass인
+  AlertDialog의 사용 권장
+- AlertDialog에는 세 개의 Button만 들어갈 수 있다.
 
+Intent
+- Android의 애플리케이션 구성은 4대 Component로 이루어져 있다.
+- 각각의 Component 간의 통신을 맡는다.
 
+4대 Component
+1. Activity
+2. Service
+3. Broadcast Receiver
+4. Content Provider
 
+Intent 객체 생성방법
+1. 명시적 객체 생성
+  - 가장 많이 보는 객체 생성방법
+  - 앱의 화면전환을 할 때 사용하는 방법
+  - 하나의 Activity에서 다른 Activity로 화면전환 시 사용
+2. 암시적 Intent
+  - 암시적 Intent는 Intent의 Action에 따라 적합한
+    어플리케이션 클래스를 호출
+  - 웹 브라우저의 호출, 이메일 전송, 전화앱 이동 등에 해당
+  - 만든 앱이 아닌 이미 만들어진 앱으로 전환된다.
 
-
+ 
 
 
 
