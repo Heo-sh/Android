@@ -90,7 +90,11 @@ public class IntentActivity extends AppCompatActivity {
 
                 startActivity(i);
             } else if (id == R.id.next) {
-                
+                //다른 Activity로 전환
+                                            //현재 클래스          이동할 클래스
+                i = new Intent(IntentActivity.this, IntentSubActivity.class);
+                startActivity(i);
+
             }
         }
     };

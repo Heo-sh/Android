@@ -179,11 +179,64 @@ Intent 객체 생성방법
     어플리케이션 클래스를 호출
   - 웹 브라우저의 호출, 이메일 전송, 전화앱 이동 등에 해당
   - 만든 앱이 아닌 이미 만들어진 앱으로 전환된다.
+------------------------------------------------------
+2023-07-14
 
- 
+Intent Flag
+- 두 개의 Activity를 이동하는 것을 봤는데 겹쳐지기에 돌아올 때는
+  intent를 사용하지 않는다.
+- Intent Flag를 사용하면 겹치는 문제를 해결 가능
 
+언제 사용되는가?
+- 안드로이드에서 Activity를 호출하다 보면 발생하는
+  중복문제나 흐름을 제어하고 싶을 때 사용
 
+Task
+- 어플리케이션에서 실행되는 Activity를 기록하는 Stack
+- 안드로이드에서는 Task를 이용하여 화면의 순서와
+  흐름을 관리한다.
 
+Intent Flag 사용법
+1. Manifest에서 제어
+  - activity launchMode = "사용하고자 하는 속성"
+  속성의 종류
+  #1. standard: 별도의 Task를 생성하지 않고 해당 Task에
+	        계속 쌓아 나간다.(default값)
+  #2. singleTop: Task의 Top에 생성하려는 Activity가 존재하는 경우
+	        새로운 Activity를 Top에 올리지 않고 기존의
+	        Activity를 재사용
+  #3. singleStack: 루트 Activity로만 존재하며, 하나의 Instance만 생성 가능
+  #4. singleInstance: 루트 Activity로만 존재하며, 하나의 Instance만 생성 가능하고,
+		  Task 내의 해당 Activity 하나만 속할 수 있어 다른 Activity를
+		  실행시키면 새로운 Task가 생성되어 그 Task 내에 포함된다.
+2. 소스코드에서 Flag 제어
+  - Intent.addFlags(): 새로운 flag를 기존 flag에 붙임
+  - Intent.setFlags(): 오래된 flag 전체를 대체 
+  소스코드 Flag에 들어가는 매개변수
+    - FLAG_ACTIVITY_BROUGHT_TO_FRONT
+      : 시스템 디폴트값, 같은 Task에 Activity가 있을 경우
+        Activity 실행 모드가 singleTask면 자동으로 설정
+    - FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET
+      : ask가 리셋될 때 플래그가 사용된 Activity부터 위의 Activity가 모두 삭제됨
+    - FLAG_ACTIVITY_CLEAR_TOP
+      : 호출하는 Activity가 스택에 있을 경우, 해당 Activity를 최상위로 올리면서, 
+        그 위에 있던 Activity들을 모두 삭제하는 Flag
+    - FLAG_ACTIVITY_SINGLE_TOP
+      : 호출되는 Activity가 최상위에 존재할 경우에는 해당 Activity를 다시 생성하지 않고, 
+        존재하던 Activity를 다시 사용
+
+Handler
+- 새로운 Project를 만들면 자동으로 생성되는 MainActivity는
+  앱이 실행될 때 하나의 Process에서 처리된다.
+- MainActivity 내에서 Event를 처리하거나 특정 Method를 정의하여
+  기능을 구현할 때도 같은 Process 안에서 실행된다.
+- 기능들이 순서대로 실행이 될 때는 문제가 없지만,
+  대기 시간이 길어지는 Network 요청 등의 기능을 수행할 때에느
+  화면에 보이는 UI도 멈춘 상태로 있게 되는 문제가 발생할 수 있다.
+- Handler는 Android에서 비동기적 Message를 처리하기 위해 사용되며
+  Thread 간 통신을 할 수 있도록 하는 방법 제공
+- ex) 스톱워치를 켜고 홈버튼을 눌러서 나갔다 들어와도 시간은
+       흐로고 있어야 한다.
 
 
 
