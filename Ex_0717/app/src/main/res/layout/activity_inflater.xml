@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InflaterActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="text1"
+        android:textSize="30dp"/>
+
+    <!--
+    레이아웃을 만들다보면 지나치게 길어진다거나 상황에 따라서 수정을 해야 할 경우가 있다.
+    textview 사이에다가 리니어 레이아웃을 하나 만들고 id를 레이아웃으로 주자.
+    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/layout"/>
+
+
+    <!--
+    이 레이아웃에는 우리가 별도로 만든 액티비티와 세트가 아닌 다른 ooo.xml 참조파일을 만들어서
+    디자인을 한다음에 리니어레이아웃 안에다가 넣을 수 있다. 리스트뷰를 하기 전에 반드시 알아야 할 기술이다.
+    -->
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="text2"
+        android:textSize="30dp"/>
+</LinearLayout>
