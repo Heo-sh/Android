@@ -40,6 +40,7 @@ public class Parser {
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 
             //발급받은 ID와 SECRET을 서버로 전달
+            //key와 value로 값을 전달
             connection.setRequestProperty("X-Naver-Client-Id", "JdGkNfjscEyfMt0FxTt3");
             connection.setRequestProperty("X-Naver-Client-Secret", "acajn_LYuA");
 
@@ -74,6 +75,7 @@ public class Parser {
                         String title = parser.nextText();
                         vo.setB_title(title);
                     } else if (tagName.equals("image")) {
+                        //실제 image가 아닌 경로를 가져온 것
                         String image = parser.nextText();
                         vo.setB_img(image);
                     } else if (tagName.equals("author")) {
