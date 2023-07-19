@@ -1,6 +1,7 @@
 package com.hsh.ex_naverapi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -8,8 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,11 +22,13 @@ import java.io.BufferedInputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 import vo.BookVO;
 
 public class ViewModelAdapter extends ArrayAdapter<BookVO> {
 
+    //NaverActivity.class
     Context context;
 
     int resource;
@@ -33,12 +38,37 @@ public class ViewModelAdapter extends ArrayAdapter<BookVO> {
     ArrayList<BookVO> list;
 
     //파라미터를 받는 생성자가 필요하다.
-    public ViewModelAdapter(Context context, int resource, ArrayList<BookVO> list) {
+    public ViewModelAdapter(Context context, int resource, ArrayList<BookVO> list, ListView myListView) {
         super(context, resource, list);
         this.context = context;
         this.resource = resource;
         this.list = list;
-    }
+
+        //Main에서 넘어온 ListView에게 이벤트 감지자를 등록
+        myListView.setOnItemClickListener(click);
+    } //생성자
+
+    AdapterView.OnItemClickListener click = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            //int i는 책에 대한 자세한 내용을 보기 위해 항목을 누를 때, (맨 위에 위치한 것을 누르면 i는 0)
+            String title = list.get(i).getB_title();
+            String author = list.get(i).getB_author();
+            String price = list.get(i).getB_price();
+
+            //이미지 경로를 가짐
+            String img = list.get(i).getB_img();
+
+            Intent intent = new Intent(context, SubActivity.class);
+            intent.putExtra("title", title);
+            intent.putExtra("author", author);
+            intent.putExtra("price", price);
+            intent.putExtra("img", img);
+
+            //일반 클래스로 보내는 것이다 보니 context를 붙여야 한다.
+            context.startActivity(intent);
+        }
+    };
 
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

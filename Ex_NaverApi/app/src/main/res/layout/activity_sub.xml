@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+ScrollView: 세로로 화면이 넘칠 때 Scroll을 자동으로 생성해주는 객체이다.
+            ScrollView의 직계자식은 반드시 하나여야 한다.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,38 +12,46 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="300dp"
-        android:src="@drawable/rabbit"
-        android:layout_gravity="center"
-        android:id="@+id/img"/>
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="40dp"
-        android:text="Title"
-        android:id="@+id/title"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Author"
-        android:textSize="20dp"
-        android:id="@+id/author"/>
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="300dp"
+            android:src="@drawable/rabbit"
+            android:layout_gravity="center"
+            android:id="@+id/img"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Price"
-        android:textSize="20dp"
-        android:id="@+id/price"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="40dp"
+            android:text="Title"
+            android:id="@+id/title"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Clear"
-        android:id="@+id/clear"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Author"
+            android:textSize="20dp"
+            android:id="@+id/author"/>
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:textSize="20dp"
+            android:id="@+id/price"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clear"
+            android:id="@+id/clear"/>
+
+    </LinearLayout>
+
+
+</ScrollView>

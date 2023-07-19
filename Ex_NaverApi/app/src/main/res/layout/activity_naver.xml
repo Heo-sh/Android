@@ -20,6 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="input text"
+                android:inputType="text"
                 android:id="@+id/search"
                 android:imeOptions="actionSearch"/>
 
@@ -37,7 +38,8 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/myListView"/>
+            android:id="@+id/myListView"
+            android:visibility="visible"/>
 
         <!--
         한 칸당 어떻게 디자인을 할 지 정해야 한다.

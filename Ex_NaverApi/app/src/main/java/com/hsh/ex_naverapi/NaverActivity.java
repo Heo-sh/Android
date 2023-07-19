@@ -6,11 +6,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -28,11 +32,12 @@ public class NaverActivity extends AppCompatActivity {
     //connectNaver 메서드를 호출하려면 parser 객체가 있어야 한다.
     Parser parser;
 
+    //로딩 이미지를 띄우기 위한 레이아웃
     LinearLayout loading;
 
     //adapter 객체 준비
     ViewModelAdapter adapter;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +64,26 @@ public class NaverActivity extends AppCompatActivity {
 
                 //execute() 메서드에 parameter를 넣어 보낼 수 있다.
                 new NaverAsync().execute("횽", "길", "동");
+
+                //로딩시작
+                loading.setVisibility(View.VISIBLE);
+                myListView.setVisibility(View.GONE);
+
+                //검색 후 키보드를 안 보이게 하기
+                InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(search.getWindowToken(), 0);
+            }
+        });
+        
+        //가상 키보드에서 검색 버튼을 누른 경우 실제 ok버튼이 눌리도록 강제 클릭
+        search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if(i == EditorInfo.IME_ACTION_SEARCH) {
+                    //ok 버튼 누르기
+                    search_btn.performClick();
+                }
+                return true;
             }
         });
     }
@@ -96,11 +121,14 @@ public class NaverActivity extends AppCompatActivity {
 
             //목록화를 가능하게 하기 위한 class가 하나 더 필요하다.
             //생성자를 통해 param 전달
-            adapter = new ViewModelAdapter(NaverActivity.this, R.layout.book_item, bookVOS);
+            adapter = new ViewModelAdapter(NaverActivity.this, R.layout.book_item, bookVOS, myListView);
 
             //준비된 adapter를 ListView에 탑재
             myListView.setAdapter(adapter);
 
+            //로딩 종료
+            loading.setVisibility(View.GONE);
+            myListView.setVisibility(View.VISIBLE);
         }
     }
 

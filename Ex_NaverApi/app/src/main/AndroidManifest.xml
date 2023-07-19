@@ -20,7 +20,9 @@
             android:exported="false" />
         <activity
             android:name=".NaverActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden">
+            <!--windowSoftInputMode="stateHidden": 앱을 실행 시 바로 키보드를 보여주지 않게끔 한다.-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

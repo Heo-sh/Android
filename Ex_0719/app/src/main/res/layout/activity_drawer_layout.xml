@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DrawerLayoutActivity"
+    android:id="@+id/drawer">
+
+    <!--서랍이 열리기 전에 보여줄 메인 Layout-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Main"
+            android:textSize="30dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open Drawer"
+            android:id="@+id/open"/>
+    </LinearLayout>
+
+    <!--서랍 Layout-->
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/violet"
+        android:id="@+id/linear"
+        android:layout_gravity="start">
+        <!--
+        android:layout_gravity="start" -> 왼쪽에서 오른쪽으로
+        android:layout_gravity="end" -> 오른쪽에서 왼쪽으로
+        -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I'm Drawer"
+            android:textSize="30dp"/>
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:src="@drawable/rabbit2"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Close Drawer"
+            android:id="@+id/close"/>
+
+    </LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
