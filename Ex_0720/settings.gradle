@@ -1,0 +1,22 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+
+        //지문 확인을 위해서 거쳐야 할 곳
+        maven { url "https://jitpack.io" }
+
+        //pattern 확인을 위해 거쳐야 할 곳
+        jcenter()
+    }
+}
+rootProject.name = "Ex_0720"
+include ':app'

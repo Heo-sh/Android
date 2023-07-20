@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FingerPrintActivity">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/img_finger"
+        android:layout_centerInParent="true"
+        android:id="@+id/finger"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="지문 인증"
+        android:textSize="50dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/text"
+        android:layout_below="@id/finger"/>
+    <!--
+    android:layout_below="@id/finger" -> finger라는 id를 가진 view 밑에 배치하겠다.
+    android:layout_centerHorizontal="true" -> 경계선을 기준으로 중심에 배치하겠다.
+    -->
+</RelativeLayout>
