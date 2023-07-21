@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace 'com.hsh.ex_0720'
+    namespace 'com.hsh.ex_0721'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.hsh.ex_0720"
-        minSdk 27
+        applicationId "com.hsh.ex_0721"
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -37,15 +37,14 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    //지문 확인을 위한 lib
-    implementation 'com.github.ajalt.reprint:core:3.3.2@aar' // required: supports marshmallow devices
-    implementation 'com.github.ajalt.reprint:reprint_spass:3.3.2@aar' // optional: deprecated support for pre-marshmallow Samsung devices
-    implementation 'com.github.ajalt.reprint:rxjava:3.3.2@aar' // optional: the RxJava 1 interface
-    implementation 'com.github.ajalt.reprint:rxjava2:3.3.2@aar' // optional: the RxJava 2 interface
+    //TedPermission lib
 
-    //pattern 확인을 위한 lib
-    implementation 'com.andrognito.patternlockview:patternlockview:1.0.0'
-
-    //Sweet Alert을 위한 lib
-    implementation 'com.github.thomper:sweet-alert-dialog:1.4.0'
+    // Normal
+    implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0'
+    // Coroutine
+    implementation 'io.github.ParkSangGwon:tedpermission-coroutine:3.3.0'
+    // RxJava2
+    implementation 'io.github.ParkSangGwon:tedpermission-rx2:3.3.0'
+    // RxJava3
+    implementation 'io.github.ParkSangGwon:tedpermission-rx3:3.3.0'
 }
