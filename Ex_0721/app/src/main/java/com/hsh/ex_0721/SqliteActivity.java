@@ -10,10 +10,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -79,21 +81,84 @@ public class SqliteActivity extends AppCompatActivity {
             
             if (id == select.getId()) {
                 //전체조회
+                searchQuery("select * from friend");
             } else if (id == search.getId()) {
-                //검색
+                //유효성 검사
+                String str = name.getText().toString().trim();
+                if (str.length() == 0) {
+                    Toast.makeText(SqliteActivity.this, "검색할 이름 입력", Toast.LENGTH_SHORT).show();
+                } else {
+                    //검색
+                    //DB에서 검색을 하려면 ''로 감싸줘야 한다.
+                    searchQuery(String.format("select * from friend where name='%s'", str));
+                }
+
             } else if (id == insert.getId()) {
-                //추가
+                String in_name = name.getText().toString().trim();
+                String in_phone = phone.getText().toString().trim();
+                String str_age = age.getText().toString().trim();
+
+                //유효성 검사
+                if (in_name.length() == 0) {
+                    Toast.makeText(SqliteActivity.this, "추가할 이름 입력", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (in_phone.length() == 0) {
+                    Toast.makeText(SqliteActivity.this, "추가할 번호 입력", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (str_age.length() == 0) {
+                    Toast.makeText(SqliteActivity.this, "추가할 나이 입력", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int in_age = Integer.parseInt(str_age);
+
+                //추가 및 전체조회
+                searchQuery(String.format("insert into friend values('%s', '%s', %d)", in_name, in_phone, in_age));
+                searchQuery("select * from friend");
+
             } else if (id == del.getId()) {
                 //삭제
+                String del_name = name.getText().toString().trim();
+
+                searchQuery(String.format("delete from friend where name = '%s'", del_name));
+                searchQuery("select * from friend");
             }
         }
     };
 
     //Query문 수행을 위한 메서드
-    public void SearchQuery(String query) {
+    public void searchQuery(String query) {
         Cursor c = mDatabase.rawQuery(query, null);
         //지금 DB만 복사해놓은 상태이고, 실제 어디로 연결해야 하는지 지정 X
         //mDatabase를 통해서 rawQuery라는 메서드를 가지고 Query문을 요청해야 함
+
+        //c.getColumnCount(): friend 테이블의 column 수(name, phone, age)
+        String[] col = new String[c.getColumnCount()];
+        col = c.getColumnNames();
+        //col[0]: name
+        //col[1]: phone
+        //col[2]: age
+
+        String[] str = new String[c.getColumnCount()];
+        //최종 결과를 저장해둘 변수
+        String result = "";
+        //Log.i("my", col[0] + "/" + col[1] + "/" + col[2]);
+
+        //행 단위로 한 줄씩 커서 이동
+        while (c.moveToNext()) {
+            for (int i = 0; i < col.length; i++) {
+                //먼저 빈 문자열을 넣어두지 않으면 null이 먼저 들어가서
+                //null홍길동이 되어번린다.
+                str[i] = "";
+                str[i] += c.getString(i);
+                result += col[i] + ": " + str[i] + "\n";
+            }
+        }
+        res.setText(result);
     }
 
     //assets 폴더의 DB를 휴대폰 내부저장소에 저장하기 위한 메서드
